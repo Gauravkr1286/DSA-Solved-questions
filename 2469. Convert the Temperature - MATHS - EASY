@@ -1,0 +1,12 @@
+class Solution {
+public:
+    vector<double> convertTemperature(double celsius) {
+        vector <double> v;
+        cout<<setprecision(5)<<fixed;
+        double Kelvin = celsius + 273.15;
+        double Fahrenhit = (celsius * 1.80) + 32;
+        v.push_back(Kelvin);
+        v.push_back(Fahrenhit);
+        return v;
+    }
+};
