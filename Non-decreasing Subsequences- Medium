@@ -1,0 +1,30 @@
+Given an integer array nums, return all the different possible non-decreasing subsequences of the given array with at least two elements. You may return the answer in any order.
+
+
+This is a backtracking solution in C++ that uses an unordered_set to keep track of elements that have already been used in the current subsequence, in order to avoid duplicate subsequences.
+ 
+ 
+ class Solution {
+public:
+   vector<vector<int>> findSubsequences(vector<int>& nums) {
+    vector<vector<int>> res;
+    vector<int> sub;
+    findSubsequencesHelper(nums, 0, sub, res);
+    return res;
+}
+
+void findSubsequencesHelper(vector<int>& nums, int start, vector<int>& sub, vector<vector<int>>& res) {
+    if (sub.size() >= 2) {
+        res.push_back(sub);
+    }
+    unordered_set<int> used;
+    for (int i = start; i < nums.size(); i++) {
+        if ((sub.empty() || nums[i] >= sub.back()) && used.find(nums[i]) == used.end()) {
+            sub.push_back(nums[i]);
+            findSubsequencesHelper(nums, i + 1, sub, res);
+            sub.pop_back();
+            used.insert(nums[i]);
+        }
+    }
+}
+};
