@@ -1,0 +1,22 @@
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        unordered_map<char, int> charCount;
+    for (char c : s) {
+        charCount[c]++;
+    }
+    for (char c : t) {
+        if (--charCount[c] < 0) {
+            return c;
+        }
+    }
+    return ' ';
+}
+
+int main() {
+    string s = "abcd";
+    string t = "abcde";
+    cout << findTheDifference(s, t) << endl;
+    return 0;
+    }
+};
