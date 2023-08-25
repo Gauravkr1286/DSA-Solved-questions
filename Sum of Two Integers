@@ -1,0 +1,23 @@
+Given two integers a and b, return the sum of the two integers without using the operators + and -.
+
+
+
+**SOLUTION**
+class Solution {
+public:
+
+    int getSum(int x, int y) {
+
+
+
+        while (y != 0) {
+            
+            int carry = x & y;  
+            x = x ^ y; 
+
+            
+            y = carry << 1;
+        }
+        return x;
+    }
+};
